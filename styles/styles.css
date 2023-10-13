@@ -30,7 +30,6 @@ body{
     border-style: solid;
     grid-template-columns:1fr 3fr 2fr;
     margin-bottom: 5px;
-    height: 41px;
 }
 .day_info{
     background-color: lightcoral;
