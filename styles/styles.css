@@ -58,7 +58,7 @@ body{
 .sets{
     background-color: violet;
 }
-.popup_container{
+.popup_container_shade{
     position: fixed;
     background-color: rgba(0, 0, 0, 0.329);
     width: 100%;
@@ -69,12 +69,34 @@ body{
     top: 0;
 
 }
-.popup_info{
+.popup_container{
     position: relative;
-    background-color: aquamarine;
     width: 250px;
     height: 250px;
     border-style: solid;
     top: 35%;
     bottom: 50%;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup_info_header{
+    background-color: lightblue;
+    height: 25%;
+}
+.popup_info_body{
+    background-color: lightcoral;
+    height: 35%;
+
+}
+.popup_info_data{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 45%;
+}
+.popup_data_reps{
+    background-color: aqua;
+}
+.popup_data_sets{
+    background-color: blueviolet;
 }
