@@ -7,7 +7,7 @@
     <title>CF tracker</title>
   </head>
   <body>
-    <div class="popup_container_shade">
+    <div class="popup_container_shade" id="popup">
       <div class="popup_container">
         <div class="popup_info_header">1</div>
         <div class="popup_info_body">2</div>
@@ -23,9 +23,11 @@
         </div>
       </div>
     </div>
-    <div class="tool_bar">tool bar</div>
-    <div class="main_container">
-      <div class="list_item">
+    <div class="tool_bar" id="tool_bar">
+      <button onclick="togglePopup()">toggle pop up</button>
+    </div>
+    <div id="main_container">
+      <div class="list_item" id="list_item">
         <div class="day_info">pu</div>
         <div class="date_info">
           <p style="margin-bottom: 5px">date info</p>
