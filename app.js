@@ -1,13 +1,3 @@
-// const WorkOutData = {
-//   Index: 0,
-//   TileDate: Date,
-//   Split: "",
-//   Reps: 0,
-//   Sets: 0,
-//   Notes: "",
-// };
-// let savedData = [];
-
 function daysInMonth(month, year) {
   return new Date(year, month, 0).getDate();
 }
