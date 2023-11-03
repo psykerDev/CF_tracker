@@ -5,8 +5,6 @@ body {
   padding-top: 60px;
 }
 .tool_bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   background-color: darkgray;
   position: fixed;
   top: 0;
@@ -17,6 +15,7 @@ body {
   border-right: 0px;
   border-style: solid;
   z-index: 1000;
+  font-size: 30px;
 }
 #main_container {
   padding-left: 10px;
@@ -73,26 +72,5 @@ body {
   border-style: solid;
   top: 35%;
   bottom: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.popup_info_header {
-  background-color: lightblue;
-  height: 20%;
-}
-.popup_info_body {
-  background-color: lightcoral;
-  height: 45%;
-}
-.popup_info_data {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  height: 40%;
-}
-.popup_data_reps {
-  background-color: aqua;
-}
-.popup_data_sets {
-  background-color: blueviolet;
+  background-color: white;
 }

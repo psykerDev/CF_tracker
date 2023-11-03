@@ -8,39 +8,47 @@
   </head>
   <body>
     <div class="popup_container_shade" id="popup">
-      <div class="popup_container">
-        <div class="popup_info_header">1</div>
-        <div class="popup_info_body">2</div>
-        <div class="popup_info_data">
-          <div class="popup_data_reps">
-            <div style="height: 30%; background-color: darkgray">reps</div>
-            <div style="height: 70%">5</div>
-          </div>
-          <div class="popup_data_sets">
-            <div style="height: 30%; background-color: darkgray">sets</div>
-            <div style="height: 70%">2</div>
-          </div>
+      <div class="popup_container" id="popup_container">
+        <div class="popup_info_header"></div>
+        <div>
+          <button onclick="inputReps(5)">5</button>
+          <button onclick="inputReps(10)">10</button>
+          <button onclick="inputReps(15)">15</button>
+          <button onclick="inputReps(20)">20</button>
+        </div>
+        <div>
+          <div id="reps_indicator">reps 0</div>
+          <button onclick="decincReps(false)">decrements</button>
+          <button onclick="decincReps(true)">increaments</button>
+        </div>
+        <div>
+          <div id="sets_indicator">sets 0</div>
+          <button onclick="decincSets(false)">decrements</button>
+          <button onclick="decincSets(true)">increments</button>
+        </div>
+        <div>
+          <button>submit</button>
+          <button onclick="zeroOut()">zero out</button>
+          <button onclick="togglePopup()">cancel</button>
         </div>
       </div>
     </div>
-    <div class="tool_bar" id="tool_bar">
-      <button onclick="togglePopup()">toggle pop up</button>
-    </div>
+    <div class="tool_bar" id="tool_bar">CF Tracker</div>
     <div id="main_container">
       <div class="list_item" id="list_item">
         <div class="day_info">pu</div>
         <div class="date_info">
-          <p style="margin-bottom: 5px">date info</p>
-          <p>compleation info</p>
+          <p style="margin-bottom: 5px" id="date">date info</p>
+          <p id="status">compleation info</p>
         </div>
         <div class="rep_set_info">
           <div class="reps">
             <p>reps</p>
-            <p>10</p>
+            <p id="repCont">0</p>
           </div>
           <div class="sets">
             <p>sets</p>
-            <p>5</p>
+            <p id="setCont">0</p>
           </div>
         </div>
       </div>
