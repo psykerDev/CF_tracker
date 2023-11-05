@@ -247,12 +247,26 @@ function loadSavedData(maincontainer) {
       sets.textContent = CLISets;
     }
   }
+  setStatus(maincontainer);
 }
-function setStatus() {
-  localStorage.setItem("reps", 2);
-  let localTest = localStorage.getItem("reps");
-  let testItem = document.querySelector("#tool_bar");
-  testItem.textContent = localTest;
+function setStatus(maincontainer) {
+  let listItems = maincontainer.querySelectorAll("div.list_item");
+
+  for (let i = 0; i < listItems.length; i++) {
+    let currentListItem = listItems[i];
+    let currListItemid = currentListItem.id;
+    let itembyid = document.getElementById(currListItemid);
+    let repsetinfo = itembyid.querySelector(".rep_set_info");
+    let reps = repsetinfo.querySelector("#repCont");
+    let sets = repsetinfo.querySelector("#setCont");
+    let dateInfo = itembyid.querySelector(".date_info");
+    let status = dateInfo.querySelector("#status");
+    if (reps.textContent != "0" && sets.textContent != "0") {
+      status.textContent = "compleat";
+    } else {
+      status.textContent = "incompleat";
+    }
+  }
 }
 populateList();
 setInterval(() => {
