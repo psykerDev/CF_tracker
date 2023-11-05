@@ -27,13 +27,22 @@
           <button onclick="decincSets(true)">increments</button>
         </div>
         <div>
-          <button>submit</button>
+          <button onclick="submitValue()">submit</button>
           <button onclick="zeroOut()">zero out</button>
           <button onclick="togglePopup()">cancel</button>
         </div>
       </div>
     </div>
-    <div class="tool_bar" id="tool_bar">CF Tracker</div>
+    <div style="display: flex" class="tool_bar" id="tool_bar">
+      <div>CF Tracker</div>
+      <button
+        style="margin-left: auto; margin-right: 10px"
+        onclick="saveAppData()"
+      >
+        save
+      </button>
+      <button onclick="localStorage.clear()">Clear Data</button>
+    </div>
     <div id="main_container">
       <div class="list_item" id="list_item">
         <div class="day_info">pu</div>

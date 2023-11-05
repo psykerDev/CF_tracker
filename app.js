@@ -1,4 +1,5 @@
 let itemId;
+let setsInc = 0;
 let localReps = 0;
 let localSets = 0;
 function daysInMonth(month, year) {
@@ -26,6 +27,7 @@ function togglePopup() {
     popupshade.style.backgroundColor = "rgba(0,0,0,0)";
     popupshade.style.display = "none";
   }
+  zeroOutPop();
 }
 
 function makeListItemId(currentDay) {
@@ -125,12 +127,14 @@ function populateList() {
   setDateComplInfo(mainContainer);
   addEventlists(mainContainer);
   togglePopup();
+  loadSavedData(mainContainer);
 }
 function inputReps(reps) {
   let listItem = document.getElementById(itemId);
   let repSetCont = listItem.querySelector(".rep_set_info");
   let repsCont = repSetCont.querySelector("#repCont");
   repsCont.textContent = reps;
+  incSets();
   togglePopup();
 }
 function setPopupHeader() {
@@ -168,6 +172,90 @@ function decincSets(incdec) {
   }
   setIndicator.innerHTML = "sets " + localSets;
 }
-// localReps the localstorage valu
-//localSets are the localstorage value
+
+function submitValue() {
+  let listItem = document.getElementById(itemId);
+  let repSetCont = listItem.querySelector(".rep_set_info");
+  let repsCont = repSetCont.querySelector("#repCont");
+  let setsCont = repSetCont.querySelector("#setCont");
+  repsCont.innerHTML = localReps;
+  setsCont.innerHTML = localSets;
+  togglePopup();
+}
+function zeroOutPop() {
+  let setIndicator = document.querySelector("#sets_indicator");
+  let repIndicator = document.querySelector("#reps_indicator");
+  setIndicator.innerHTML = "sets " + 0;
+  repIndicator.innerHTML = "reps " + 0;
+  localReps = 0;
+  localSets = 0;
+}
+function incSets() {
+  let currSets = document.getElementById(itemId);
+  let repSet = currSets.querySelector(".rep_set_info");
+  let sets = repSet.querySelector(".sets");
+  let setCont = sets.querySelector("#setCont");
+  let setContVal = parseInt(setCont.textContent);
+  setContVal++;
+  setCont.textContent = setContVal;
+}
+function saveAppData() {
+  let maincontainer = document.getElementById("main_container");
+  let listItems = maincontainer.querySelectorAll("div.list_item");
+
+  for (let i = 0; i < listItems.length; i++) {
+    let currentListItem = listItems[i];
+    let currListItemid = currentListItem.id;
+    let itembyid = document.getElementById(currListItemid);
+    let repsetinfo = itembyid.querySelector(".rep_set_info");
+    let reps = repsetinfo.querySelector("#repCont");
+    let sets = repsetinfo.querySelector("#setCont");
+
+    let repKeyVal = currListItemid + "_rep";
+    let setKeyVal = currListItemid + "_set";
+    let CLIReps = reps.textContent;
+    let CLISets = sets.textContent;
+
+    localStorage.setItem(repKeyVal, CLIReps);
+    localStorage.setItem(setKeyVal, CLISets);
+  }
+}
+function loadSavedData(maincontainer) {
+  let listItems = maincontainer.querySelectorAll("div.list_item");
+
+  for (let i = 0; i < listItems.length; i++) {
+    let currentListItem = listItems[i];
+    let currListItemid = currentListItem.id;
+    let itembyid = document.getElementById(currListItemid);
+    let repsetinfo = itembyid.querySelector(".rep_set_info");
+    let reps = repsetinfo.querySelector("#repCont");
+    let sets = repsetinfo.querySelector("#setCont");
+
+    let repKeyVal = currListItemid + "_rep";
+    let setKeyVal = currListItemid + "_set";
+
+    let CLIReps = localStorage.getItem(repKeyVal);
+    let CLISets = localStorage.getItem(setKeyVal);
+    if (CLIReps == null) {
+      reps.textContent = 0;
+    } else {
+      reps.textContent = CLIReps;
+    }
+    if (CLISets == null) {
+      reps.textContent = 0;
+    } else {
+      sets.textContent = CLISets;
+    }
+  }
+}
+function setStatus() {
+  localStorage.setItem("reps", 2);
+  let localTest = localStorage.getItem("reps");
+  let testItem = document.querySelector("#tool_bar");
+  testItem.textContent = localTest;
+}
 populateList();
+setInterval(() => {
+  saveAppData();
+  console.log("data saved");
+}, 10000);
