@@ -5,59 +5,124 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CF tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body background="icons/background.jpg">
     <div class="popup_container_shade" id="popup">
       <div class="popup_container" id="popup_container">
+        <div class="closeIcon"><img src="icons/close (1).png" /></div>
         <div class="popup_info_header"></div>
-        <div>
-          <button onclick="inputReps(5)">5</button>
-          <button onclick="inputReps(10)">10</button>
-          <button onclick="inputReps(15)">15</button>
-          <button onclick="inputReps(20)">20</button>
+        <div class="popup_value_input">
+          <button style="background-color: #f239f8" onclick="inputReps(5)">
+            5
+          </button>
+          <button style="background-color: #e52aeb" onclick="inputReps(10)">
+            10
+          </button>
+          <button style="background-color: #b325b8" onclick="inputReps(15)">
+            15
+          </button>
+          <button style="background-color: #9f1ba3" onclick="inputReps(20)">
+            20
+          </button>
         </div>
-        <div>
-          <div id="reps_indicator">reps 0</div>
-          <button onclick="decincReps(false)">decrements</button>
-          <button onclick="decincReps(true)">increaments</button>
+        <div class="popup_reps_input">
+          <div id="reps_indicator" style="margin-left: 15px">reps 0</div>
+          <div id="repArrow_inc" style="margin-left: auto; margin-right: 10px">
+            <img src="icons/up-arrow.png" />
+          </div>
+          <div id="repArrow_dec" style="margin-right: 10px">
+            <img src="icons/down-arrow.png" />
+          </div>
         </div>
-        <div>
-          <div id="sets_indicator">sets 0</div>
-          <button onclick="decincSets(false)">decrements</button>
-          <button onclick="decincSets(true)">increments</button>
+        <div class="popup_sets_input">
+          <div style="margin-left: 15px" id="sets_indicator">sets 0</div>
+          <div id="setArrow_inc" style="margin-left: auto; margin-right: 10px">
+            <img src="icons/up-arrow.png" />
+          </div>
+          <div id="setArrow_dec" style="margin-right: 10px">
+            <img src="icons/down-arrow.png" />
+          </div>
         </div>
-        <div>
-          <button onclick="submitValue()">submit</button>
-          <button onclick="zeroOut()">zero out</button>
-          <button onclick="togglePopup()">cancel</button>
+        <div class="zero_submit">
+          <button
+            style="margin-left: 10px"
+            class="submit"
+            onclick="submitValue()"
+          >
+            submit
+          </button>
+          <button
+            style="margin-right: 10px"
+            class="zero_out"
+            onclick="zeroOut()"
+          >
+            zero out
+          </button>
         </div>
       </div>
     </div>
-    <div style="display: flex" class="tool_bar" id="tool_bar">
-      <div>CF Tracker</div>
+    <div
+      bacground
+      style="
+        display: flex;
+        background-image: url(/icons/toolborBG.webp);
+        background-size: cover;
+      "
+      class="tool_bar"
+      id="tool_bar"
+    >
+      <div style="color: white; margin-top: 5px; margin-left: 10px">
+        CF Tracker
+      </div>
       <button
-        style="margin-left: auto; margin-right: 10px"
+        style="
+          margin-left: auto;
+          margin-right: 10px;
+          border-radius: 10px;
+          background-color: white;
+          border: none;
+          height: 40px;
+          margin-top: 5px;
+        "
         onclick="saveAppData()"
       >
-        save
+        Save Data
       </button>
-      <button onclick="localStorage.clear()">Clear Data</button>
+      <button
+        onclick="localStorage.clear()"
+        style="
+          margin-right: 5px;
+          border-radius: 10px;
+          background-color: white;
+          border: none;
+          height: 40px;
+          margin-top: 5px;
+        "
+      >
+        Clear Data
+      </button>
     </div>
     <div id="main_container">
       <div class="list_item" id="list_item">
-        <div class="day_info">pu</div>
+        <div class="day_info"></div>
         <div class="date_info">
-          <p style="margin-bottom: 5px" id="date">date info</p>
-          <p id="status">compleation info</p>
+          <p style="margin-bottom: 2px; margin-top: 5px" id="date">date info</p>
+          <p id="status" style="margin-bottom: 5px">compleation info</p>
         </div>
         <div class="rep_set_info">
-          <div class="reps">
-            <p>reps</p>
-            <p id="repCont">0</p>
-          </div>
           <div class="sets">
-            <p>sets</p>
+            <p style="margin-bottom: 2px">sets</p>
             <p id="setCont">0</p>
+          </div>
+          <div class="reps">
+            <p style="margin-bottom: 2px">reps</p>
+            <p id="repCont">0</p>
           </div>
         </div>
       </div>

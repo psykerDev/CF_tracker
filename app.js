@@ -60,19 +60,19 @@ function setSplitContent(mainContainer) {
 
     switch (setvar) {
       case 0:
-        dayInfo.textContent = "push";
+        dayInfo.textContent = "Push";
         setvar = 1;
         break;
       case 1:
-        dayInfo.textContent = "pull";
+        dayInfo.textContent = "Pull";
         setvar = 2;
         break;
       case 2:
-        dayInfo.textContent = "leg";
+        dayInfo.textContent = "Legs";
         setvar = 3;
         break;
       case 3:
-        dayInfo.textContent = "rest";
+        dayInfo.textContent = "Rest";
         setvar = 0;
         break;
     }
@@ -103,7 +103,7 @@ function addEventlists(main_container) {
     let currListItemId = currentListItem.id;
     document
       .getElementById(currListItemId)
-      .addEventListener("click", function getIdOfListItem() {
+      .addEventListener("click", function () {
         togglePopup();
         itemId = currListItemId;
         setPopupHeader();
@@ -128,6 +128,7 @@ function populateList() {
   addEventlists(mainContainer);
   togglePopup();
   loadSavedData(mainContainer);
+  addClickInc();
 }
 function inputReps(reps) {
   let listItem = document.getElementById(itemId);
@@ -268,8 +269,34 @@ function setStatus(maincontainer) {
     }
   }
 }
+function addClickInc() {
+  let setArrowInc = document.querySelector("#setArrow_inc");
+  let setArrowDec = document.querySelector("#setArrow_dec");
+  let repArrowInc = document.querySelector("#repArrow_inc");
+  let repArrowDec = document.querySelector("#repArrow_dec");
+  let closeIcon = document.querySelector(".closeIcon");
+
+  closeIcon.addEventListener("click", function () {
+    togglePopup();
+    console.log("popup closed");
+  });
+
+  setArrowInc.addEventListener("click", function () {
+    decincSets(true);
+  });
+  setArrowDec.addEventListener("click", function () {
+    decincSets(false);
+  });
+  repArrowInc.addEventListener("click", function () {
+    decincReps(true);
+  });
+  repArrowDec.addEventListener("click", function () {
+    decincReps(false);
+  });
+  console.log("event added");
+}
 populateList();
 setInterval(() => {
   saveAppData();
   console.log("data saved");
-}, 10000);
+}, 20000);
